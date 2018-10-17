@@ -1,7 +1,7 @@
 # Builds directory
 bin*
 
-# CLion files
+# IDE files
 *.xml
 
 # CMake files
@@ -9,6 +9,9 @@ bin*
 *CMakeCache.txt
 *Makefile
 *.cmake
+
+# Conan files
+*conan*info.txt
 
 # Compiled Object files
 *.slo
@@ -31,3 +34,4 @@ bin*
 *.exe
 *.out
 *.app
+
