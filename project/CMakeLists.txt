@@ -52,16 +52,6 @@ set ( HDR_FILES
 )
 
 add_executable ( TemplateProject ${SRC_FILES} ${HDR_FILES} )
-#add_executable(CircleTests src/Shape.h src/Shape.cpp src/Circle.h src/Circle.cpp tests/CircleTests.cpp)
-#add_executable(RectangleTests src/Shape.h src/Shape.cpp src/Rectangle.h src/Rectangle.cpp tests/RectangleTests.cpp)
-#add_executable(SquareTests src/Shape.h src/Shape.cpp src/Square.h src/Square.cpp tests/SquareTests.cpp)
-#add_executable(TriangleTests src/Shape.h src/Shape.cpp src/Triangle.h src/Triangle.cpp tests/TriangleTests.cpp)
-#
-#target_link_libraries(CircleTests
-#        CONAN_PKG::gtest)
-#target_link_libraries(RectangleTests
-#        CONAN_PKG::gtest)
-#target_link_libraries(SquareTests
-#        CONAN_PKG::gtest)
-#target_link_libraries(TriangleTests
-#        CONAN_PKG::gtest)
+add_executable( BasicTest tests/BasicTest.cpp)
+
+target_link_libraries( BasicTest CONAN_PKG::gtest)
