@@ -38,3 +38,4 @@ bin*
 *CMakeDoxyfile.in
 *.cbp
 *.idea
+*cmake-build-debug
