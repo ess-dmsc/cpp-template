@@ -6,30 +6,30 @@ cmake_minimum_required ( VERSION 2.8.5 )
 # Name
 project ( TemplateProject )
 
-if (NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
+if ( NOT CMAKE_BUILD_TYPE )
+    set( CMAKE_BUILD_TYPE Debug )
 endif()
 
 # Find custom cmake modules
-set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
+set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" )
 
-set(CONAN "AUTO" CACHE STRING "conan options AUTO (conan must be in path) or MANUAL (expects conanbuildinfo.cmake in build directory)")
-set(CONAN_PROFILE "default" CACHE STRING "Name of conan profile to use, uses default by default")
-include(${CMAKE_MODULE_PATH}/conan.cmake)
-if(${CONAN} MATCHES "AUTO")
-    conan_cmake_run(CONANFILE conanfile.txt
+set( CONAN "AUTO" CACHE STRING "conan options AUTO (conan must be in path) or MANUAL (expects conanbuildinfo.cmake in build directory)" )
+set( CONAN_PROFILE "default" CACHE STRING "Name of conan profile to use, uses default by default" )
+include( ${CMAKE_MODULE_PATH}/conan.cmake )
+if( ${CONAN} MATCHES "AUTO" )
+    conan_cmake_run( CONANFILE conanfile.txt
             PROFILE ${CONAN_PROFILE}
             BASIC_SETUP CMAKE_TARGETS
-            BUILD outdated)
-elseif(${CONAN} MATCHES "MANUAL")
-    if(EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
-        include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
-        conan_basic_setup(TARGETS)
+            BUILD outdated )
+elseif( ${CONAN} MATCHES "MANUAL" )
+    if( EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake" )
+        include( "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake" )
+        conan_basic_setup( TARGETS )
     else()
-        message(FATAL_ERROR "CONAN set to MANUAL but no file named conanbuildinfo.cmake found in build directory")
+        message( FATAL_ERROR "CONAN set to MANUAL but no file named conanbuildinfo.cmake found in build directory" )
     endif()
 else()
-    message(FATAL_ERROR "Unrecognised option for CONAN, use AUTO or MANUAL")
+    message( FATAL_ERROR "Unrecognised option for CONAN, use AUTO or MANUAL" )
 endif()
 
 # Common setup
@@ -40,7 +40,7 @@ set ( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin )
 
 if ( CMAKE_COMPILER_IS_GNUCXX )
     # Strict C++ compilation
-    set(CMAKE_CXX_STANDARD 14)
+    set( CMAKE_CXX_STANDARD 14 )
     set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic-errors -Werror" )
 
 endif ()
@@ -59,6 +59,6 @@ set ( HDR_FILES
 )
 
 add_executable ( TemplateProject ${SRC_FILES} ${HDR_FILES} )
-add_executable( UnitTests tests/BasicTest.cpp)
+add_executable( UnitTests tests/BasicTest.cpp )
 
-target_link_libraries( UnitTests CONAN_PKG::gtest)
+target_link_libraries( UnitTests CONAN_PKG::gtest )
