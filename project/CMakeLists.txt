@@ -12,6 +12,7 @@ endif()
 
 # Find custom cmake modules
 set ( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
+
 set(CONAN "AUTO" CACHE STRING "conan options AUTO (conan must be in path) or MANUAL (expects conanbuildinfo.cmake in build directory)")
 set(CONAN_PROFILE "default" CACHE STRING "Name of conan profile to use, uses default by default")
 include(${CMAKE_MODULE_PATH}/conan.cmake)
@@ -38,8 +39,10 @@ set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin )
 set ( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin )
 
 if ( CMAKE_COMPILER_IS_GNUCXX )
-    # Strict C++ complitation
-    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -pedantic-errors -Werror" )
+    # Strict C++ compilation
+    set(CMAKE_CXX_STANDARD 14)
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic-errors -Werror" )
+
 endif ()
 
 ###############################################################################
@@ -56,6 +59,6 @@ set ( HDR_FILES
 )
 
 add_executable ( TemplateProject ${SRC_FILES} ${HDR_FILES} )
-add_executable( BasicTest tests/BasicTest.cpp)
+add_executable( UnitTests tests/BasicTest.cpp)
 
-target_link_libraries( BasicTest CONAN_PKG::gtest)
+target_link_libraries( UnitTests CONAN_PKG::gtest)
