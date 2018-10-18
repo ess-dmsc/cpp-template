@@ -35,3 +35,7 @@ bin*
 *.out
 *.app
 
+*CMakeDoxyfile.in
+*.cbp
+*.idea
+*cmake-build-debug
