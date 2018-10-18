@@ -27,14 +27,16 @@ endif ()
 # Common setup
 #include ( CommonSetup )
 
-################################################################################
+###############################################################################
 ## Doxygen
-################################################################################
+###############################################################################
+
+set(BUILD_DOCS TRUE)
 
 # add a target to generate API documentation with Doxygen
 find_package( Doxygen )
 if( DOXYGEN_FOUND AND BUILD_DOCS )
-    configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY )
+    configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/CMakeDoxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY )
     add_custom_target( doc
             ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
@@ -42,9 +44,9 @@ if( DOXYGEN_FOUND AND BUILD_DOCS )
             )
 endif()
 
-################################################################################
+###############################################################################
 ## Conan
-################################################################################
+###############################################################################
 
 set( CONAN "AUTO" CACHE STRING "conan options AUTO (conan must be in path) or MANUAL (expects conanbuildinfo.cmake in build directory)" )
 set( CONAN_PROFILE "default" CACHE STRING "Name of conan profile to use, uses default by default" )
