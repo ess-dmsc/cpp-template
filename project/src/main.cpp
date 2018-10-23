@@ -7,11 +7,11 @@
 ///   square(3.8);
 /// \endcode
 ///
-/// \param val Double value to be squared.
+/// \param value Double value to be squared.
 ///
-/// \returns The square of `val`.
-double square(double val) {
-  return val * val;
+/// \returns The square of `value`.
+double square(double value) {
+  return value * value;
 }
 
 int main(int argc, char **argv) {
