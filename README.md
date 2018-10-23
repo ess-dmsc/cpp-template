@@ -1,5 +1,8 @@
 # Template C++ Project
 
-NOT READY FOR USE.
-
-A starting point for new C++ projects with boilerplate CMake, Conan and CI.
+A starting point for new C++ projects with boilerplate/default:
+- CMake
+- Conan
+- CI (Jenkinsfile)
+- github PR template
+- unit tests (gtest)
