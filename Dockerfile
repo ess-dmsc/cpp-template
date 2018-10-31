@@ -32,9 +32,12 @@ RUN cd BUILD_DIR && conan install --build=outdated ../PROJECT_SRC/conan/conanfil
 COPY ./src ../PROJECT_SRC/src
 COPY ./CMakeLists.txt ../PROJECT_SRC/CMakeLists.txt
 COPY ./cmake ../PROJECT_SRC/cmake
+# Copy any more directories here 
 
 RUN cd BUILD_DIR && cmake -DCONAN="MANUAL" ../PROJECT_SRC && make -j8
 
+# Uncomment below if the program outputs to files
+#RUN mkdir /output-files
 COPY docker_launch.sh 
 
 CMD ["./docker_launch.sh"]
