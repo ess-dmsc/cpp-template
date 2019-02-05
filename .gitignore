@@ -4,12 +4,6 @@ bin*
 # IDE files
 *.xml
 
-# CMake files
-*CMakeFiles*
-*CMakeCache.txt
-*Makefile
-*.cmake
-
 # Conan files
 *conan*info.txt
 
